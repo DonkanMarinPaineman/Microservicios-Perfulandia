@@ -26,12 +26,10 @@ public class ProductoServiceImpl implements ProductoService {
 
     private Producto convertirAEntidad(ProductoDTO dto) {
         Producto producto = new Producto();
-        producto.setId(dto.getId());
-        producto.setNombre(dto.getNombre());
-        producto.setDescripcion(dto.getDescripcion());
-        producto.setPrecio(dto.getPrecio());
-        producto.setStock(dto.getStock());
-        producto.setMarca(dto.getMarca());
+        dto.setId(producto.getId());
+        dto.setNombre(producto.getNombre());
+        dto.setMarca(producto.getMarca());
+        dto.setPrecio(producto.getPrecio());
         return producto;
     }
 
@@ -56,19 +54,7 @@ public class ProductoServiceImpl implements ProductoService {
         productoRepository.save(producto);
     }
 
-    @Override
-    public ProductoDTO actualizar(Long id, ProductoDTO dto) {
-        Producto productoExistente = productoRepository.findById(id).orElse(null);
-        if (productoExistente != null) {
-            productoExistente.setNombre(dto.getNombre());
-            productoExistente.setDescripcion(dto.getDescripcion());
-            productoExistente.setPrecio(dto.getPrecio());
-            productoExistente.setStock(dto.getStock());
-            productoExistente.setMarca(dto.getMarca());
-            return convertirADTO(productoRepository.save(productoExistente));
-        }
-        return null;
-    }
+   
 
     @Override
     public void eliminar(Long id) {
