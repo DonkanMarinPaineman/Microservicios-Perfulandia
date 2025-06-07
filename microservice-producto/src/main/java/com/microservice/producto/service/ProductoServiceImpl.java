@@ -19,10 +19,8 @@ public class ProductoServiceImpl implements ProductoService {
         ProductoDTO dto = new ProductoDTO();
         dto.setId(producto.getId());
         dto.setNombre(producto.getNombre());
-        dto.setDescripcion(producto.getDescripcion());
-        dto.setPrecio(producto.getPrecio());
-        dto.setStock(producto.getStock());
         dto.setMarca(producto.getMarca());
+        dto.setPrecio(producto.getPrecio());
         return dto;
     }
 
