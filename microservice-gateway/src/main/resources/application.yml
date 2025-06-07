@@ -3,7 +3,17 @@ spring:
     name: msvc-gateway
   config:
     import: 'optional:configserver:http://localhost:8888'
-        
+  cloud:
+    gateway:
+      routes:
+        - id: productos
+          uri: lb://PRODUCTOS
+          predicates:
+            - Path=/api/productos/**
+        - id: pedidos
+          uri: lb://PEDIDOS
+          predicates:
+            - Path=/api/pedidos/**      
 
  
         
